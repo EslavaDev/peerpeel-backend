@@ -24,7 +24,7 @@ exports.getAll = (req, res) => {
   const { lim } = req.query || 5;
   Category.find({})
     .sort('description')
-    .populate('user', 'nombre email')
+    .populate('worker', 'nombre email')
     .skip(Number(sky))
     .limit(Number(lim))
     .exec((err, category) => {
