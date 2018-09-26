@@ -43,7 +43,7 @@
       let id_token = googleUser.getAuthResponse().id_token;
       console.log(id_token);
       var xhr = new XMLHttpRequest();
-      xhr.open('POST', '/v1/login/googleClient');
+      xhr.open('POST', 'http://peerpeel.herokuapp.com/v1/login/googleClient');
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       xhr.onload = function () {
         console.log('Signed in as: ' + xhr.responseText);
@@ -63,7 +63,7 @@
       let id_token = googleUser.getAuthResponse().id_token;
       console.log(id_token);
       var xhr = new XMLHttpRequest();
-      xhr.open('POST', '/v1/login/googleWorker');
+      xhr.open('POST', 'http://peerpeel.herokuapp.com/v1/login/googleWorker');
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       xhr.onload = function () {
         console.log('Signed in as: ' + xhr.responseText);
