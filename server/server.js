@@ -17,7 +17,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 routeConfig(app);
 
-app.use(express.static(path.resolve(__dirname, '../public')));
+app.use('/panel', express.static(path.resolve(__dirname, '../public/panel')));
+app.use('/', express.static(path.resolve(__dirname, '../public/website')));
 app.set('view engine', 'hbs');
 
 mongoose.set('useCreateIndex', true);
