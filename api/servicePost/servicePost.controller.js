@@ -69,7 +69,7 @@ exports.getServicePostSearch = (req, res) => {
   // const { _id } = req.user;
 
   const regex = new RegExp(term, 'i');
-  Service.find({ nombre: regex })
+  Service.find({ title: regex })
     .populate('client', 'nombre email')
     .populate('worker', 'nombre email')
     .populate('categoria', 'description')
