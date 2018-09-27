@@ -7,13 +7,17 @@ const User = require('./worker.model');
 
 exports.saveUser = (req, res) => {
   const {
-    nombre, email, password, role,
+    nombre, apellido, email, password, role, identificacion, phone, direccion,
   } = req.body;
   const user = new User({
     nombre,
+    apellido,
     email,
     password: bcrypt.hashSync(password, 10),
     role,
+    direccion,
+    phone,
+    identificacion,
   });
 
   user.save((err, userDB) => {
@@ -33,7 +37,7 @@ exports.saveUser = (req, res) => {
 
 exports.updateUser = (req, res) => {
   const { id } = req.params;
-  const body = _.pick(req.body, ['nombre', 'email', 'img', 'role', 'estado']);
+  const body = _.pick(req.body, ['nombre', 'email', 'img', 'role', 'estado', 'apellido', 'direccion', 'phone', 'identificacion']);
 
   User.findByIdAndUpdate(id, body, { new: true, runValidators: true }, (err, userDB) => {
     if (err) {
