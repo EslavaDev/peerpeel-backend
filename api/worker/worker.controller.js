@@ -7,7 +7,7 @@ const User = require('./worker.model');
 
 exports.saveUser = (req, res) => {
   const {
-    nombre, apellido, email, password, role, identificacion, phone, direccion,
+    nombre, apellido, email, password, role, identificacion, phone, direccion, edad,
   } = req.body;
   const user = new User({
     nombre,
@@ -18,6 +18,7 @@ exports.saveUser = (req, res) => {
     direccion,
     phone,
     identificacion,
+    edad,
   });
 
   user.save((err, userDB) => {
@@ -37,7 +38,7 @@ exports.saveUser = (req, res) => {
 
 exports.updateUser = (req, res) => {
   const { id } = req.params;
-  const body = _.pick(req.body, ['nombre', 'email', 'img', 'role', 'estado', 'apellido', 'direccion', 'phone', 'identificacion']);
+  const body = _.pick(req.body, ['edad', 'nombre', 'email', 'img', 'role', 'estado', 'apellido', 'direccion', 'phone', 'identificacion']);
 
   User.findByIdAndUpdate(id, body, { new: true, runValidators: true }, (err, userDB) => {
     if (err) {
