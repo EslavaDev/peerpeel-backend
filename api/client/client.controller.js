@@ -79,6 +79,40 @@ exports.getUsers = (req, res) => {
     });
 };
 
+exports.getId = (req, res) => {
+  const { id } = req.params;
+  User.find({ estado: true, _id: id })
+    .exec((err, users) => {
+      if (err) {
+        return res.status(400).json({
+          ok: false,
+          err,
+        });
+      }
+      return res.json({
+        ok: true,
+        users,
+      });
+    });
+};
+
+exports.getInfo = (req, res) => {
+  const { _id } = req.user;
+  User.find({ _id })
+    .exec((err, users) => {
+      if (err) {
+        return res.status(400).json({
+          ok: false,
+          err,
+        });
+      }
+      return res.json({
+        ok: true,
+        users,
+      });
+    });
+};
+
 exports.deleteUser = (req, res) => {
   const { id } = req.params;
   // User.findByIdAndUpdate(id, (err, userDB) => {

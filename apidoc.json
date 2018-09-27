@@ -1,8 +1,10 @@
-{
-  "name": "Task API documentation",
-  "version": "0.0.2",
-  "description": "API task list manager",
+[{
+  "name": "Tu driver",
+  "version": "1.0.0",
+  "description": "Documentación de consumo API RESTFULL PeerPeel",
+  "url" : "https://peerpeel.herokuapp.com",
   "template": {
-      "forceLanguage": "es"
-  }
+    "forceLanguage": "es"
 }
+}]
+

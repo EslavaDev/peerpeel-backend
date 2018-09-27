@@ -7,7 +7,7 @@
     "node": "8.11.0"
   },
   "scripts": {
-    "docs": "./node_modules/.bin/apidoc -i api/ -o public/docs",
+    "doc": "apidoc -i api/apidoc/ -o public/apidoc/",
     "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./server/server.js -e js,hbs,html,css"
@@ -28,6 +28,7 @@
     "bcrypt": "^3.0.0",
     "express": "^4.16.3",
     "express-fileupload": "^0.4.0",
+    "express-subdomain": "^1.0.5",
     "google-auth-library": "^2.0.0",
     "hbs": "^4.0.1",
     "jsonwebtoken": "^8.3.0",

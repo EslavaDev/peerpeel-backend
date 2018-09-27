@@ -13,6 +13,26 @@ const workerSchema = new Schema({
     type: String,
     required: [true, 'el nombre es necesario'],
   },
+  apellido: {
+    type: String,
+    required: [true, 'el apellido es necesario'],
+  },
+  direccion: {
+    type: String,
+    required: [true, 'la direccion es necesario'],
+  },
+  identificacion: {
+    type: String,
+    required: [true, 'la identificacion es necesaria'],
+  },
+  phone: {
+    type: Number,
+    required: [true, 'el celular es necesario'],
+  },
+  edad: {
+    type: Number,
+    required: [true, 'la edad es necesaria'],
+  },
   email: {
     type: String,
     unique: true,

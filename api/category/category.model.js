@@ -11,6 +11,13 @@ const categorySchema = new Schema({
       'La descripción es obligatoria',
     ],
   },
+  img: {
+    type: String,
+    required: [
+      true,
+      'La imagen es obligatoria',
+    ],
+  },
   user: {
     type: Schema.Types.ObjectId,
     ref: 'Admin',
