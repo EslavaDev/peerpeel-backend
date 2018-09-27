@@ -24,8 +24,8 @@ if (process.env.NODE_ENV === 'dev') {
   app.use('/doc', express.static(path.resolve(__dirname, '../public/apidoc')));
   app.use('/', express.static(path.resolve(__dirname, '../public/website')));
 } else {
-  app.use(subdomain('panel', express.static(path.resolve(__dirname, '../public/panel/'))));
-  app.use(subdomain('doc', express.static(path.resolve(__dirname, '../public/apidoc/'))));
+  app.use('/panel', express.static(path.resolve(__dirname, '../public/panel/')));
+  app.use('/doc', express.static(path.resolve(__dirname, '../public/apidoc/')));
   app.use('/', express.static(path.resolve(__dirname, '../public/website/')));
 }
 app.set('view engine', 'hbs');
