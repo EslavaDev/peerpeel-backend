@@ -39,7 +39,7 @@
  *
  * @apiSampleRequest https://peerpeel.herokuapp.com/v1/worker/:id
  *
- * @apiHeader {String} Authorization User token.
+ * @apiHeader {String} token User token.
  *
  * @apiParam (Request body) {String} nombre Full username.
  * @apiParam (Request body) {String} apellido Full user last name.
@@ -59,7 +59,7 @@
  * @apiDescription para "eliminar" se debe tener rol ADMIN
  * @apiSampleRequest https://peerpeel.herokuapp.com/v1/worker/:id
  *
- * @apiHeader {String} Authorization User token.
+ * @apiHeader {String} token User token.
  *
  */
 
@@ -72,6 +72,6 @@
  * ya vienen unos valos por defectos pero para paginar es necesario enviarlo
  * @apiSampleRequest https://peerpeel.herokuapp.com/v1/worker?sky=0&lim=5
  *
- * @apiHeader {String} Authorization User token.
+ * @apiHeader {String} token User token.
  *
  */
