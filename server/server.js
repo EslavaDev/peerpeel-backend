@@ -3,7 +3,7 @@ const winston = require('winston');
 const mongoose = require('mongoose');
 const path = require('path');
 const fileUpload = require('express-fileupload');
-// const subdomain = require('express-subdomain');
+const subdomain = require('express-subdomain');
 const http = require('http');
 // const hbs = require('hbs');
 const routeConfig = require('./routes');
@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === 'dev') {
   app.use('/', express.static(path.resolve(__dirname, '../public/website')));
 } else {
   app.use('/panel', express.static(path.resolve(__dirname, '../public/panel/')));
-  app.use('/doc', express.static(path.resolve(__dirname, '../public/apidoc/')));
+  app.use(subdomain('doc', express.static(path.resolve(__dirname, '../public/apidoc/'))));
   app.use('/', express.static(path.resolve(__dirname, '../public/website/')));
 }
 app.set('view engine', 'hbs');

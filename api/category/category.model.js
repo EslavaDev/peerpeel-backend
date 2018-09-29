@@ -14,13 +14,13 @@ const categorySchema = new Schema({
   img: {
     type: String,
     required: [
-      true,
+      false,
       'La imagen es obligatoria',
     ],
   },
   user: {
     type: Schema.Types.ObjectId,
-    ref: 'Admin',
+    ref: { type: Schema.Types.ObjectId, ref: 'Worker', required: true },
   },
 });
 
