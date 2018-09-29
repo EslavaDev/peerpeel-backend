@@ -2,7 +2,7 @@
   "name": "PeerPeel",
   "version": "1.0.0",
   "description": "Documentación de consumo API RESTFULL PeerPeel",
-  "url" : "https://peerpeel.com",
+  "url" : "https://doc.peerpeel.com",
   "template": {
     "forceLanguage": "es"
 }
