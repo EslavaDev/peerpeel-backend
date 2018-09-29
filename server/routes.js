@@ -21,7 +21,7 @@ module.exports = (app) => {
   app.use('/v1/worker', worker);
   app.use('/v1/login', login);
   app.use('/v1/category', category);
-  app.use('/v1/Post', servicePost);
+  app.use('/v1/post', servicePost);
   app.use('/v1/uploads', uploads);
   app.use('/v1/images', images);
   app.use('/v1/quotation', quotation);
