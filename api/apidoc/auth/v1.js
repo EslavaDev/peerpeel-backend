@@ -17,8 +17,8 @@
  * @apiVersion 1.0.0
  * @apiName LoginWorker
  * @apiGroup Auth
- *
- * @apiSampleRequest https://peerpeel.herokuapp.com/v1/login/worker
+ * @apiDescription https://peerpeel.herokuapp.com/v1/login/worker
+ * @apiSampleRequest /v1/login/worker
  * @apiParam (Request body) {String} email email.
  * @apiParam (Request body) {String} password password.
  *
@@ -29,8 +29,8 @@
  * @apiVersion 1.0.0
  * @apiName LoginGoogleWorker
  * @apiGroup Auth
- *
- * @apiSampleRequest https://peerpeel.herokuapp.com/v1/login/googleWorker
+ * @apiDescription https://peerpeel.herokuapp.com/v1/login/googleWorker
+ * @apiSampleRequest /v1/login/googleWorker
  *
  * @apiParam (Request body) {String} token debes loguearte con google este te da un token.
  *
@@ -41,8 +41,8 @@
  * @apiVersion 1.0.0
  * @apiName LoginClient
  * @apiGroup Auth
- *
- * @apiSampleRequest https://peerpeel.herokuapp.com/v1/login/client
+ * @apiDescription https://peerpeel.herokuapp.com/v1/login/client
+ * @apiSampleRequest /v1/login/client
  *
  * @apiParam (Request body) {String} email email.
  * @apiParam (Request body) {String} password password.
@@ -54,8 +54,8 @@
  * @apiVersion 1.0.0
  * @apiName LoginGoogleClient
  * @apiGroup Auth
- *
- * @apiSampleRequest https://peerpeel.herokuapp.com/v1/login/googleClient
+ * @apiDescription https://peerpeel.herokuapp.com/v1/login/googleClient
+ * @apiSampleRequest /v1/login/googleClient
  *
  * @apiParam (Request body) {String} token debes loguearte con google este te da un token.
  *

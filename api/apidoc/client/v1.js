@@ -16,8 +16,8 @@
  * @apiVersion 1.0.0
  * @apiName RegisterClient
  * @apiGroup Client
- *
- * @apiSampleRequest https://peerpeel.herokuapp.com/v1/client
+ * @apiDescription https://peerpeel.herokuapp.com/v1/client
+ * @apiSampleRequest /v1/client
  *
  * @apiParam (Request body) {String} nombre Full username.
  * @apiParam (Request body) {String} email This email is required for login.
@@ -31,8 +31,9 @@
  * @apiVersion 1.0.0
  * @apiName UpdateClient
  * @apiGroup Client
+ * @apiDescription https://peerpeel.herokuapp.com/v1/client/:id
  *
- * @apiSampleRequest https://peerpeel.herokuapp.com/v1/client/:id
+ * @apiSampleRequest /v1/client/:id
  *
  * @apiHeader {String} token User token.
  *
@@ -47,7 +48,9 @@
  * @apiName DeleteClient
  * @apiGroup Client
  * @apiDescription para "eliminar" se debe tener rol ADMIN
- * @apiSampleRequest https://peerpeel.herokuapp.com/v1/client/:id
+ * url:
+ * https://peerpeel.herokuapp.com/v1/client/:id
+ * @apiSampleRequest /v1/client/:id
  *
  * @apiHeader {String} token User token.
  *
@@ -60,7 +63,9 @@
  * @apiGroup Client
  * @apiDescription los parametros sky y lim son opcionales
  * ya vienen unos valos por defectos pero para paginar es necesario enviarlo
- * @apiSampleRequest https://peerpeel.herokuapp.com/v1/client?sky=0&lim=5
+ * url:
+ * https://peerpeel.herokuapp.com/v1/client?sky=0&lim=5
+ * @apiSampleRequest /v1/client?sky=0&lim=5
  *
  * @apiHeader {String} token User token.
  *
