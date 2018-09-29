@@ -1,8 +1,8 @@
 [{
-  "name": "Tu driver",
+  "name": "PeerPeel",
   "version": "1.0.0",
   "description": "Documentación de consumo API RESTFULL PeerPeel",
-  "url" : "https://peerpeel.herokuapp.com",
+  "url" : "https://peerpeel.com",
   "template": {
     "forceLanguage": "es"
 }
