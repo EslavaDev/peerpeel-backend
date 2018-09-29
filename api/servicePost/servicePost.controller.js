@@ -40,6 +40,32 @@ exports.saveService = (req, res) => {
   });
 };
 
+exports.getAllForCategory = (req, res) => {
+  const { sky } = req.query || 0;
+  const { lim } = req.query || 5;
+  const { id } = req.params;
+
+  Service.find({ categoria: id })
+    .sort('title')
+    .populate('client', 'nombre email')
+    .populate('worker', 'nombre email')
+    .populate('categoria', 'description')
+    .skip(Number(sky))
+    .limit(Number(lim))
+    .exec((err, serviceDB) => {
+      if (err) {
+        return res.status(400).json({
+          ok: false,
+          err,
+        });
+      }
+      return res.json({
+        ok: true,
+        serviceDB,
+      });
+    });
+};
+
 exports.getAll = (req, res) => {
   const { sky } = req.query || 0;
   const { lim } = req.query || 5;
@@ -70,6 +96,37 @@ exports.getServicePostSearch = (req, res) => {
 
   const regex = new RegExp(term, 'i');
   Service.find({ title: regex })
+    .populate('client', 'nombre email')
+    .populate('worker', 'nombre email')
+    .populate('categoria', 'description')
+    .exec((err, serviceDB) => {
+      if (err) {
+        return res.status(500).json({
+          ok: false,
+          err,
+        });
+      }
+      if (!serviceDB) {
+        return res.status(400).json({
+          ok: false,
+          err: {
+            message: 'El termino no existe',
+          },
+        });
+      }
+      return res.json({
+        ok: true,
+        serviceDB,
+      });
+    });
+};
+
+exports.getServicePostSearchCategory = (req, res) => {
+  const { term, id } = req.params;
+  // const { _id } = req.user;
+
+  const regex = new RegExp(term, 'i');
+  Service.find({ title: regex, categoria: id })
     .populate('client', 'nombre email')
     .populate('worker', 'nombre email')
     .populate('categoria', 'description')
