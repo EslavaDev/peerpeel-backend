@@ -25,6 +25,20 @@
  */
 
 /**
+ * @api {get} {{APIVERSION}}/login verifyToken
+ * @apiVersion 1.0.0
+ * @apiName AuthToken
+ * @apiGroup Auth
+ * @apiDescription
+ * url:
+ * https://peerpeel.herokuapp.com/v1/login
+ * @apiSampleRequest /v1/login
+ *
+ * @apiHeader {String} token User token.
+ *
+ */
+
+/**
  * @api {post} {{APIVERSION}}/login/googleWorker Login user Worker Google
  * @apiVersion 1.0.0
  * @apiName LoginGoogleWorker
