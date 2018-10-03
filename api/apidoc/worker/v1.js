@@ -79,3 +79,31 @@
  * @apiHeader {String} token User token.
  *
  */
+
+/**
+ * @api {get} {{APIVERSION}}/worker/:id Get one Clienworkert
+ * @apiVersion 1.0.0
+ * @apiName GetOneWorker
+ * @apiGroup Worker
+ * @apiDescription
+ * url:
+ * https://peerpeel.herokuapp.com/v1/worker/:id
+ * @apiSampleRequest /v1/worker/:id
+ *
+ * @apiHeader {String} token User token.
+ *
+ */
+
+/**
+ * @api {get} {{APIVERSION}}/worker/info Get info you user
+ * @apiVersion 1.0.0
+ * @apiName GetInfoWorker
+ * @apiGroup Worker
+ * @apiDescription
+ * url:
+ * https://peerpeel.herokuapp.com/v1/worker/info
+ * @apiSampleRequest /v1/worker/info
+ *
+ * @apiHeader {String} token User token.
+ *
+ */

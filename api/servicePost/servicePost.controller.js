@@ -3,7 +3,7 @@ const Service = require('./servicePost.model');
 exports.saveService = (req, res) => {
   const {
     title,
-    valorInicial,
+    pago,
     descripcion,
     ubicacion,
     categoria,
@@ -13,7 +13,7 @@ exports.saveService = (req, res) => {
 
   const service = new Service({
     title,
-    valorInicial,
+    pago,
     descripcion,
     ubicacion,
     categoria,
