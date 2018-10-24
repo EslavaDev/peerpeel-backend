@@ -14,7 +14,8 @@ const servicePostSchema = new Schema({
   worker: { type: Schema.Types.ObjectId, ref: 'Worker' },
   price: { type: Number, required: false },
   img: {
-    type: [String],
+    type: Schema.Types.Mixed,
+    default: [],
   },
 });
 
