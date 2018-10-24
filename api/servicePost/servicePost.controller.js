@@ -11,14 +11,28 @@ exports.saveService = (req, res) => {
 
   const { _id } = req.user;
 
-  const service = new Service({
-    title,
-    pago,
-    descripcion,
-    ubicacion,
-    categoria,
-    client: _id,
-  });
+  let service;
+
+  if (req.body.img) {
+    service = new Service({
+      title,
+      pago,
+      descripcion,
+      ubicacion,
+      categoria,
+      client: _id,
+      img: req.body.img,
+    });
+  } else {
+    service = new Service({
+      title,
+      pago,
+      descripcion,
+      ubicacion,
+      categoria,
+      client: _id,
+    });
+  }
 
   service.save((err, productDB) => {
     if (err) {
