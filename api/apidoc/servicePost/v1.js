@@ -68,6 +68,17 @@
  */
 
 /**
+ * @api {get} {{APIVERSION}}/post/client?sky=0&lim=5 Post get All for client
+ * @apiVersion 1.0.0
+ * @apiName PostGetAllClient
+ * @apiGroup Post
+ * @apiDescription https://peerpeel.herokuapp.com/v1/post/client?sky=0&lim=5
+ * Role:. Worker Client
+ * @apiSampleRequest /v1/post/client?sky=0&lim=5
+ * @apiHeader {String} token User token.
+ */
+
+/**
  * @api {get} {{APIVERSION}}/post/:id Post get one
  * @apiVersion 1.0.0
  * @apiName PostGetOne

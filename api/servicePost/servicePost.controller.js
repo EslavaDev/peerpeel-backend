@@ -92,6 +92,31 @@ exports.getAll = (req, res) => {
     });
 };
 
+exports.getAllClient = (req, res) => {
+  const { _id } = req.user;
+  const { sky } = req.query || 0;
+  const { lim } = req.query || 5;
+  Service.find({ client: _id })
+    .sort('title')
+    .populate('client', 'nombre email')
+    .populate('worker', 'nombre email')
+    .populate('categoria', 'description title')
+    .skip(Number(sky))
+    .limit(Number(lim))
+    .exec((err, serviceDB) => {
+      if (err) {
+        return res.status(400).json({
+          ok: false,
+          err,
+        });
+      }
+      return res.json({
+        ok: true,
+        serviceDB,
+      });
+    });
+};
+
 exports.getServicePostSearch = (req, res) => {
   const { term } = req.params;
   // const { _id } = req.user;
