@@ -111,10 +111,9 @@ exports.getAllClient = (req, res) => {
           err,
         });
       }
-      const result = serviceDB.filter(r => r.client === _id);
       return res.json({
         ok: true,
-        result,
+        serviceDB,
       });
     });
 };
