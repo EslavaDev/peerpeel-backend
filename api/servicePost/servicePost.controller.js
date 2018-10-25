@@ -96,27 +96,30 @@ exports.getAllClient = (req, res) => {
   const { _id } = req.user;
   const { sky } = req.query || 0;
   const { lim } = req.query || 5;
-  Service.find({ client: _id })
-    .sort('title')
-    .populate('client', 'nombre email')
-    .populate('worker', 'nombre email')
-    .populate('categoria', 'description title')
-    .skip(Number(sky))
-    .limit(Number(lim))
-    .exec((err, serviceDB) => {
-      if (err) {
-        return res.status(400).json({
-          ok: false,
-          id: _id,
-          err,
-        });
-      }
-      const result = serviceDB.filter(r => r.client === _id);
-      return res.json({
-        ok: true,
-        result,
-      });
-    });
+  return res.json({
+    ok: _id,
+  });
+  // Service.find({ client: _id })
+  //   .sort('title')
+  //   .populate('client', 'nombre email')
+  //   .populate('worker', 'nombre email')
+  //   .populate('categoria', 'description title')
+  //   .skip(Number(sky))
+  //   .limit(Number(lim))
+  //   .exec((err, serviceDB) => {
+  //     if (err) {
+  //       return res.status(400).json({
+  //         ok: false,
+  //         id: _id,
+  //         err,
+  //       });
+  //     }
+  //     const result = serviceDB.filter(r => r.client === _id);
+  //     return res.json({
+  //       ok: true,
+  //       result,
+  //     });
+  //   });
 };
 
 exports.getServicePostSearch = (req, res) => {
