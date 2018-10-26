@@ -73,7 +73,7 @@
  */
 
 /**
- * @api {get} {{APIVERSION}}/quotation/service/:id?sky=0&lim=5 Quotation get All for client
+ * @api {get} {{APIVERSION}}/quotation/service/:id?sky=0&lim=5 Quotation get All for service
  * @apiVersion 1.0.0
  * @apiName QuotationGetAllClient
  * @apiGroup Quotation
