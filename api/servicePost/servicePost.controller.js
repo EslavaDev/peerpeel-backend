@@ -111,9 +111,10 @@ exports.getAllClient = (req, res) => {
           err,
         });
       }
+      const response = serviceDB.filter(remove => remove.Estado !== 'ELIMINADO')
       return res.json({
         ok: true,
-        serviceDB,
+        serviceDB: response,
       });
     });
 };
