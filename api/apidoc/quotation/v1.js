@@ -39,7 +39,7 @@
  */
 
  /**
- * @api {put} {{APIVERSION}}/quotation/state/:id quotation update
+ * @api {put} {{APIVERSION}}/quotation/state/:id quotation update state
  * @apiVersion 1.0.0
  * @apiName QuotationUpdateState
  * @apiGroup Quotation
