@@ -237,7 +237,7 @@ exports.getId = (req, res) => {
 
 exports.removeService = (req, res) => {
   const { id } = req.params;
-  Service.findByIdAndUpdate(id, { disponible: false },
+  Service.findByIdAndUpdate(id, { Estado: 'ELIMINADO' },
     { new: true }, (err, serviceDB) => {
       if (err) {
         return res.status(500).json({

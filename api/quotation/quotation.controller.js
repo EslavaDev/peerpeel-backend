@@ -2,7 +2,6 @@ const Quotation = require('./quotation.model');
 
 exports.saveQuotation = (req, res) => {
   const {
-    title,
     valorCotizado,
     descripcion,
     service,
@@ -11,7 +10,6 @@ exports.saveQuotation = (req, res) => {
   const { _id } = req.user;
 
   const quotation = new Quotation({
-    title,
     valorCotizado,
     descripcion,
     service,
@@ -43,7 +41,7 @@ exports.getAll = (req, res) => {
   const { sky } = req.query || 0;
   const { lim } = req.query || 5;
   Quotation.find({ worker: _id })
-    .sort('title')
+    .sort('descripcion')
     .populate('worker', 'nombre email')
     .populate('ServicePost')
     .skip(Number(sky))
@@ -67,7 +65,7 @@ exports.getAllQuotationService = (req, res) => {
   const { sky } = req.query || 0;
   const { lim } = req.query || 5;
   Quotation.find({ service: id })
-    .sort('title')
+    .sort('descripcion')
     .populate('worker', 'nombre email')
     .populate('ServicePost')
     .skip(Number(sky))
@@ -88,11 +86,12 @@ exports.getAllQuotationService = (req, res) => {
 
 
 exports.getQuotationSearchFotWorker = (req, res) => {
-  const { term } = req.params;
+  const { term, state } = req.params;
   const { _id } = req.user;
 
   const regex = new RegExp(term, 'i');
-  Quotation.find({ title: regex, worker: _id })
+  const regexState = new RegExp(state, 'i');
+  Quotation.find({ descripcion: regex, estado: regexState, worker: _id })
     .populate('worker', 'nombre email')
     .populate('ServicePost')
     .exec((err, quotationDB) => {
@@ -121,6 +120,32 @@ exports.updatedQuotation = (req, res) => {
   const { id } = req.params;
   const { body } = req;
   Quotation.findByIdAndUpdate(id, body,
+    { new: true }, (err, quotationDB) => {
+      if (err) {
+        return res.status(500).json({
+          ok: false,
+          err,
+        });
+      }
+      if (!quotationDB) {
+        return res.status(400).json({
+          ok: false,
+          err: {
+            message: 'El ID no existe',
+          },
+        });
+      }
+      return res.json({
+        ok: true,
+        quotationDB,
+      });
+    });
+};
+
+exports.updatedQuotationState = (req, res) => {
+  const { id } = req.params;
+  const { estado } = req.body;
+  Quotation.findByIdAndUpdate(id, estado,
     { new: true }, (err, quotationDB) => {
       if (err) {
         return res.status(500).json({
@@ -173,7 +198,7 @@ exports.getId = (req, res) => {
 
 exports.removeQuotation = (req, res) => {
   const { id } = req.params;
-  Quotation.findByIdAndUpdate(id, { estado: 'RECHAZADO' },
+  Quotation.findByIdAndUpdate(id, { estado: 'ELIMINADO' },
     { new: true }, (err, quotationDB) => {
       if (err) {
         return res.status(500).json({
