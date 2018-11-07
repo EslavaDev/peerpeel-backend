@@ -38,7 +38,7 @@
  * @apiParam (Request body) {String} service id of the service to quote.
  */
 
- /**
+/**
  * @api {put} {{APIVERSION}}/quotation/state/:id quotation update state
  * @apiVersion 1.0.0
  * @apiName QuotationUpdateState
@@ -104,4 +104,3 @@
  * @apiSampleRequest /v1/quotation/:id
  * @apiHeader {String} token User token.
  */
-

@@ -1,4 +1,14 @@
 const Quotation = require('./quotation.model');
+const Service = require('../servicePost/servicePost.controller');
+
+this.estado = async (id) => {
+  const temp = await Service.getId(id);
+  const { Estado } = temp.ServiceDB;
+  if (Estado === 'PENDIENTE') {
+    return Service.updateState(id, { Estado: 'COTIZANDO' });
+  }
+  return true;
+};
 
 exports.saveQuotation = (req, res) => {
   const {
@@ -8,7 +18,7 @@ exports.saveQuotation = (req, res) => {
   } = req.body;
 
   const { _id } = req.user;
-
+  this.estado(service);
   const quotation = new Quotation({
     valorCotizado,
     descripcion,
@@ -33,7 +43,8 @@ exports.saveQuotation = (req, res) => {
       ok: true,
       quotationDB,
     });
-  });
+  })
+  ;
 };
 
 exports.getAll = (req, res) => {

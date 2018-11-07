@@ -207,6 +207,32 @@ exports.updatedService = (req, res) => {
     });
 };
 
+exports.updateState = (req, res) => {
+  const { id } = req.params;
+  const { Estado } = req;
+  Service.findByIdAndUpdate(id, Estado,
+    { new: true }, (err, serviceDB) => {
+      if (err) {
+        return res.status(500).json({
+          ok: false,
+          err,
+        });
+      }
+      if (!serviceDB) {
+        return res.status(400).json({
+          ok: false,
+          err: {
+            message: 'El ID no existe',
+          },
+        });
+      }
+      return res.json({
+        ok: true,
+        serviceDB,
+      });
+    });
+};
+
 exports.getId = (req, res) => {
   const { id } = req.params;
   Service.findById(id)
