@@ -1,6 +1,6 @@
 const Quotation = require('./quotation.model');
 const Service = require('../servicePost/servicePost.controller');
-
+const ServiceModel = require('../servicePost/servicePost.model');
 
 
 exports.saveQuotation = async (req, res) => {
@@ -12,38 +12,51 @@ exports.saveQuotation = async (req, res) => {
 
   const { _id } = req.user;
 
-  const temp = await Service.getId(service);
-
-  const { Estado } = temp.ServiceDB;
-  if (Estado === 'PENDIENTE') {
-    Service.updateState(service, { Estado: 'COTIZANDO' });
-  }
-  const quotation = new Quotation({
-    valorCotizado,
-    descripcion,
-    service,
-    worker: _id,
-  });
-
-  quotation.save((err, quotationDB) => {
-    if (err) {
-      return res.status(500).json({
-        ok: false,
-        err,
+  ServiceModel.findById(service)
+    .exec((erro, serviceDB) => {
+      if (erro) {
+        return res.status(500).json({
+          ok: false,
+          erro,
+        });
+      }
+      if (!serviceDB) {
+        return res.status(400).json({
+          ok: false,
+          erro: {
+            message: 'El ID no existe',
+          },
+        });
+      }
+      const { Estado } = serviceDB;
+      if (Estado === 'PENDIENTE') {
+        Service.updateStateMetode(service, { Estado: 'COTIZANDO' });
+      }
+      const quotation = new Quotation({
+        valorCotizado,
+        descripcion,
+        service,
+        worker: _id,
       });
-    }
-    if (!quotationDB) {
-      return res.status(400).json({
-        ok: false,
-        err,
+      return quotation.save((err, quotationDB) => {
+        if (err) {
+          return res.status(500).json({
+            ok: false,
+            err,
+          });
+        }
+        if (!quotationDB) {
+          return res.status(400).json({
+            ok: false,
+            err,
+          });
+        }
+        return res.status(201).json({
+          ok: true,
+          quotationDB,
+        });
       });
-    }
-    return res.status(201).json({
-      ok: true,
-      quotationDB,
     });
-  })
-  ;
 };
 
 exports.getAll = (req, res) => {
