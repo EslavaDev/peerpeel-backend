@@ -45,6 +45,12 @@ const workerSchema = new Schema({
   img: {
     type: String,
   },
+  idFront: {
+    type: String,
+  },
+  idBack: {
+    type: String,
+  },
   role: {
     type: String,
     default: 'WORKER_ROLE',
