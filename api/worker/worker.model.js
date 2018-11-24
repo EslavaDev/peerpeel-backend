@@ -30,7 +30,7 @@ const workerSchema = new Schema({
     required: [true, 'el celular es necesario'],
   },
   edad: {
-    type: Number,
+    type: Date,
     required: [true, 'la edad es necesaria'],
   },
   email: {
@@ -70,6 +70,7 @@ const workerSchema = new Schema({
   },
 });
 
+// eslint-disable-next-line func-names
 workerSchema.methods.toJSON = function () {
   const userThis = this;
   const userObject = userThis.toObject();
