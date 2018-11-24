@@ -27,7 +27,9 @@
  * @apiParam (Request body) {String} direccion Address.
  * @apiParam (Request body) {String} identificacion Identification document.
  * @apiParam (Request body) {String} img phone number.
- * @apiParam (Request body) {Number} edad age.
+ * @apiParam (Request body) {String} idFront image front of the identification of user.
+ * @apiParam (Request body) {String} idBack image back of the identification of user.
+ * @apiParam (Request body) {Date} edad age.
  *
  */
 
