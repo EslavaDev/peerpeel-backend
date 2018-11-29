@@ -55,7 +55,7 @@ exports.saveUser = (req, res) => {
       }, process.env.SEED_TOKEN, { expiresIn: process.env.EXP_TOKEN }); // expira en 30 dias
       return res.json({
         ok: true,
-        workerDB,
+        // workerDB,
         token,
       });
     });
