@@ -7,7 +7,9 @@ const User = require('./worker.model');
 
 exports.saveUser = (req, res) => {
   const {
-    nombre, apellido, email, password, role, identificacion, phone, direccion, edad,
+    nombre, apellido, email, password, role, identificacion, phone, direccion, edad, img,
+    idFront,
+    idBack,
   } = req.body;
   const user = new User({
     nombre,
@@ -19,6 +21,10 @@ exports.saveUser = (req, res) => {
     phone,
     identificacion,
     edad,
+    img,
+    idFront,
+    idBack,
+
   });
 
   user.save((err, userDB) => {
