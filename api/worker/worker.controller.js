@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-
+const jwt = require('jsonwebtoken');
 // sirve para filtrar los datos que quiero y por ende elimina los que noq uiero del objeto
 const _ = require('underscore');
 
@@ -34,11 +34,36 @@ exports.saveUser = (req, res) => {
         err,
       });
     }
-    // userDB.password = null;
-    return res.json({
-      ok: true,
-      user: userDB,
+
+    return User.findOne({ email: userDB.email }, (error, workerDB) => {
+      if (error) {
+        return res.status(500).json({
+          ok: false,
+          error,
+        });
+      }
+      if (!workerDB || !bcrypt.compareSync(password, workerDB.password)) {
+        return res.status(400).json({
+          ok: false,
+          error: {
+            message: 'Usuario o contraseña incorrectos',
+          },
+        });
+      }
+      const token = jwt.sign({
+        user: workerDB,
+      }, process.env.SEED_TOKEN, { expiresIn: process.env.EXP_TOKEN }); // expira en 30 dias
+      return res.json({
+        ok: true,
+        workerDB,
+        token,
+      });
     });
+    // userDB.password = null;
+    // return res.json({
+    //   ok: true,
+    //   user: userDB,
+    // });
   });
 };
 
