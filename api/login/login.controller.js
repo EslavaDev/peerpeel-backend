@@ -53,8 +53,15 @@ exports.loginWorker = (req, res) => {
         },
       });
     }
+    const user = {
+      sub: workerDB._id,
+      nombre: workerDB.nombre,
+      correo: workerDB.email,
+      role: workerDB.role,
+      estado: workerDB.estado,
+    }
     const token = jwt.sign({
-      user: workerDB,
+      user,
     }, process.env.SEED_TOKEN, { expiresIn: process.env.EXP_TOKEN }); // expira en 30 dias
     return res.json({
       ok: true,
@@ -195,6 +202,7 @@ exports.verifyToken = (req, res) => {
       return res.status(401).json({
         ok: false,
         err: {
+          err,
           message: 'Token no valido',
         },
       });
