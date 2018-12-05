@@ -60,7 +60,7 @@ exports.loginWorker = (req, res) => {
       facebook,
       estado,
       role,
-      telefono,
+      phone,
     } = workerDB;
     const user = {
       _id,
@@ -70,7 +70,7 @@ exports.loginWorker = (req, res) => {
       email,
       role,
       estado,
-      telefono,
+      phone,
     };
     const token = jwt.sign({
       user,
