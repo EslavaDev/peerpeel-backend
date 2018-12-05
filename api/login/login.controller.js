@@ -53,13 +53,25 @@ exports.loginWorker = (req, res) => {
         },
       });
     }
+    const {
+      _id,
+      nombre,
+      google,
+      facebook,
+      estado,
+      role,
+      telefono,
+    } = workerDB;
     const user = {
-      sub: workerDB._id,
-      nombre: workerDB.nombre,
-      correo: workerDB.email,
-      role: workerDB.role,
-      estado: workerDB.estado,
-    }
+      _id,
+      google,
+      facebook,
+      nombre,
+      email,
+      role,
+      estado,
+      telefono,
+    };
     const token = jwt.sign({
       user,
     }, process.env.SEED_TOKEN, { expiresIn: process.env.EXP_TOKEN }); // expira en 30 dias
