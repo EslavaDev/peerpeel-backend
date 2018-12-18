@@ -26,6 +26,7 @@ if (process.env.NODE_ENV === 'dev') {
 } else {
   app.use('/panel', express.static(path.resolve(__dirname, '../public/panel/')));
   app.use(subdomain('doc', express.static(path.resolve(__dirname, '../public/apidoc/'))));
+  app.use(subdomain('app', express.static(path.resolve(__dirname, '../public/app/'))));
   app.use('/', express.static(path.resolve(__dirname, '../public/website/')));
 }
 app.set('view engine', 'hbs');
