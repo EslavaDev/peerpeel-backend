@@ -17,7 +17,6 @@ require('./config');
 
 // default options
 app.use(fileUpload());
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // use it before all route definitions
@@ -33,7 +32,6 @@ if (process.env.NODE_ENV === 'dev') {
   app.use(subdomain('app', express.static(path.resolve(__dirname, '../public/app/'))));
   app.use('/', express.static(path.resolve(__dirname, '../public/website/')));
 }
-app.set('view engine', 'hbs');
 
 mongoose.set('useCreateIndex', true);
 mongoose.connect(process.env.MONGODB, { useNewUrlParser: true })
