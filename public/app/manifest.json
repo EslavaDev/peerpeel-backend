@@ -1,6 +1,6 @@
 {
-  "short_name": "CoreUI-React",
-  "name": "CoreUI-React sample",
+  "short_name": "PeerPeel Client",
+  "name": "PeerPeel App Client",
   "icons": [
     {
       "src": "./assets/img/favicon.png",
