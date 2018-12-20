@@ -6,7 +6,7 @@ exports.SavedDataBasePromise = data => new Promise((resolve, reject) => {
   admin.firestore().collection('service')
     .add(data)
     .then((res) => {
-      console.log(data, res);
+      console.log(data);
       resolve({ ok: true, data, message: `SUCCESS ${res.id}` });
       // res.status(200).json({ ok: true, message: "SUCCESS " + auth.uid, auth: auth });
       return 1;
