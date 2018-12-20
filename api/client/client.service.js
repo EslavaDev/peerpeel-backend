@@ -4,7 +4,7 @@ exports.SavedDataBasePromise = (data, auth) => new Promise((resolve, reject) => 
   admin.firestore().collection('clients').doc(auth.uid)
     .set(data)
     .then((user) => {
-      console.log(user);
+      // console.log(user);
       delete data.password;
       delete data.id;
       resolve({ ok: true, data, message: `SUCCESS ${auth.uid}` });
@@ -12,7 +12,7 @@ exports.SavedDataBasePromise = (data, auth) => new Promise((resolve, reject) => 
       return 1;
     })
     .catch((error) => {
-      console.log(error);
+      console.error(error);
       reject(error);
       // res.status(400).json(error);
       return 1;

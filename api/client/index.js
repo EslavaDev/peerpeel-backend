@@ -1,6 +1,6 @@
 const { Router } = require('express');
-const controller = require('./worker.controller');
-const { verifyToken } = require('../../server/middlewares/auth');
+const controller = require('./client.controller');
+// const { verifyToken } = require('../../server/middlewares/auth');
 
 const router = new Router();
 
