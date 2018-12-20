@@ -2,7 +2,8 @@ const admin = require('firebase-admin');
 
 exports.SavedDataBasePromise = data => new Promise((resolve, reject) => {
   console.log('---------SERVICE-------', data);
-  admin.firestore().collection('service').doc()
+  const id = `${Date.now()}PEER${Math.floor((Math.random() * 100) + 1)}`;
+  admin.firestore().collection('service').doc(id)
     .set(data)
     .then((res) => {
       console.log(data, res);
