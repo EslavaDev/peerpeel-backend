@@ -5,6 +5,8 @@ exports.register = (req, res) => {
   const {
     email,
     password,
+    identification,
+    name,
     img,
   } = req.body;
   admin.auth().createUser({
@@ -15,6 +17,8 @@ exports.register = (req, res) => {
     .then((auth) => {
       const params = {
         email,
+        name,
+        identification,
         password: auth.passwordHash,
         id: auth.uid,
       };
