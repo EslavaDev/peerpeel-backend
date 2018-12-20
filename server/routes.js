@@ -7,6 +7,7 @@ const errors = require('../components/errors');
 
 const client = require('../api/client');
 const worker = require('../api/worker');
+const service = require('../api/service');
 const login = require('../api/login');
 const category = require('../api/category');
 const servicePost = require('../api/servicePost');
@@ -19,6 +20,7 @@ module.exports = (app) => {
   // Insert routes below
   app.use('/v1/client', client);
   app.use('/v1/worker', worker);
+  app.use('/v1/service', service);
   app.use('/v1/login', login);
   app.use('/v1/category', category);
   app.use('/v1/post', servicePost);
