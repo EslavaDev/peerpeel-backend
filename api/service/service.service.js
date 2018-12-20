@@ -1,6 +1,7 @@
 const admin = require('firebase-admin');
 
 exports.SavedDataBasePromise = data => new Promise((resolve, reject) => {
+  console.log('---------SERVICE-------', data);
   admin.firestore().collection('service').doc()
     .set(data)
     .then((res) => {
